@@ -4,7 +4,8 @@ import {
     secret,
     key,
     names,
-    olderThanMinutes
+    olderThanMinutes,
+    leaveMinimum
 } from './config.js';
 
 const PERPAGE = 1000;
@@ -50,6 +51,9 @@ async function process() {
                 console.log(`${now.toTimeString()}: ${pinCount} of ${pins.rows.length} done`)
             }
             pinCount++;
+            if (leaveMinimum > 0 && leaveMinimum >= pins.rows.length - pinCount) {
+                break;
+            }
         }
     }
 }
