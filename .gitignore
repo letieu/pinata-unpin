@@ -1,0 +1,12 @@
+.DS_Store
+node_modules
+*.log
+build
+archive
+.vscode
+.idea
+.npmrc
+dist
+dist-cli
+.DS_Store
+config.js
