@@ -16,13 +16,16 @@ Ideally you would set this thing up to work on a cronjob, so that it auto-cleans
 Currently there are no batch operations on Pinata's API, and there's no way to bulk-unpin, so what the script does is:
 
 1. Gets all the pins that need to be unpinned, one page of 1000 records at a time and combines them
-2. Processes all the pins asynchronously one after another in 500ms intervals (respecting Pinata's 2req/s limit)
+2. Processes all the pins one after the other.
+
+The speed it can reach is about ~50 per minute, so set your cronjobs accordingly.
 
 ## Configuration Options
 
 - `API key` & `API secret` can be obtained from Pinata on the API Keys page of your profile
 - `olderThanMinutes` is the age below which a file will not be unpinned. E.g. if you pinned something 59 minutes ago, and the value is 60, then this pin is immune.
 - `names` is an array of filenames to target. So if your backups are named "db_backup.sql" and "images_backups.zip", you would put those. This value is always an array evne when it's just one name.
+- `leaveMinimum` will leave at least that many pins alive, not cleaning them all.
 
 ## Recent
 
