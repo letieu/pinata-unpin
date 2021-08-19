@@ -52,6 +52,8 @@ async function process() {
             }
             pinCount++;
             if (leaveMinimum > 0 && leaveMinimum >= pins.rows.length - pinCount) {
+                console.log("Minimum is set at " + leaveMinimum);
+                console.log(`Breaking loop after ${pinCount} of ${pins.rows.length}`)
                 break;
             }
         }
